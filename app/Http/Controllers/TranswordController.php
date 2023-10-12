@@ -17,6 +17,7 @@ class TranswordController extends Controller
         $keyword_id = request('keywordId', 0);
         $keyword_slug = request('keywordSlug', null);
         $keyword_user_id = request('userId', null);
+        $paginateNumber = request('paginateNumber', 10);
 
         /* *
          * TODO: add verification for authorization
@@ -39,6 +40,7 @@ class TranswordController extends Controller
         }
 
         // return response()->json(['transword' => TransWordResource::collection($query->get()), 'count' => count(TransWordResource::collection($query->get()))]);
+        // return TransWordResource::collection($query->paginate($paginateNumber)->withQueryString());
         return TransWordResource::collection($query->get());
     }
 
